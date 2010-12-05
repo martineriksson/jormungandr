@@ -1,10 +1,10 @@
 
-Artilect Model ORM (Object-Redis Mapping)
-=========================================
+Model - Minimalist ORM (Object-Redis Mapping)
+=============================================
 
 Model is a simple ORM, as in Object Redis Mapper. It enables very flexible
-creation of Ruby objects backed by a Redis database. Model classes can be
-created like so:
+creation of Ruby objects backed by a Redis database. It is kind of similar
+to Struct, but more dynamic. Model classes can be created like so:
 
     class Thing < Model
     end
@@ -20,7 +20,7 @@ with some method_missing magic:
 
 Similar magic is used for one-to-many mappings: If a method is called that is
 a pluralization of the name of a Model subclass (e.g. Thing), it returns all
-instances of that subclass that references the object on which the method was
+instances of that subclass that reference the object on which the method was
 called.
 
     p = Person.new
