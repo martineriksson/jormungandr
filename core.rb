@@ -20,11 +20,11 @@ module RedisModel
       return nil if name.to_class
 
       klass = Object.instance_eval { const_set name.to_sym, Class.new(RedisModel::Model) }
-    
+
       # Scan the database for existing instances and initialize them
       redis.keys("#{self}.#{klass}.*").each { |key| klass.new(key.split('.')[2]) }
     end
-  
+
     # Scans the database for existing models and initiates them.
     #
     def load_models!
@@ -41,7 +41,7 @@ module RedisModel
     # Returns all RedisModel (sub)classes.
     #
     def models
-    	Model.descendants
+      Model.descendants
     end
 
   end
@@ -49,4 +49,3 @@ module RedisModel
   redis 3
 
 end
-

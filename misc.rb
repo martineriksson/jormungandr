@@ -1,25 +1,25 @@
 
 module RedisModel
-  
+
   class Model
 
-  	def _key
+    def _key
       "RedisModel.#{self.class}.#{id}"
     end
 
     def attributes
-  		RedisModel.redis.hgetall(_key).keys
+      RedisModel.redis.hgetall(_key).keys
     end
 
     def to_hash
       Hash[ attributes.zip attributes.map{ |key| send key.to_sym } ].merge!({ 'id' => id })
     end
 
-  	class << self
+    class << self
 
-  		def all
+      def all
         @all
-  		end
+      end
 
       def each
         all.each { |i| yield i }
@@ -30,12 +30,12 @@ module RedisModel
         all.select{ |i| i.id == _id.to_i }.first
       end
 
-  		def choice
-  		  all.choice
-  		end
-
+      def choice
+        all.choice
+      end
+      
     end
-  
+
   end
 
 end

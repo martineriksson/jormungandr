@@ -6,16 +6,16 @@
 #
 
 module RedisModel
-  
+
   class Model
 
     def self.post params
-    	item = self.new
-    	params.each_pair do |param, value|
-    	  item.send "#{param.to_sym}=", value
-    	end
-    	item
-    	# HTTP response: 201 Created
+      item = self.new
+      params.each_pair do |param, value|
+        item.send "#{param.to_sym}=", value
+      end
+      item
+      # HTTP response: 201 Created
     end
 
     def self.get params
@@ -28,12 +28,12 @@ module RedisModel
       end
     end
 
-    def put params      
+    def put params
       if self.class.get(params)
         params.each_pair do |attribute, value|
           send :"#{attribute}=", value
         end
-      	# HTTP response: 200 OK
+        # HTTP response: 200 OK
       else
         self.class.post(params)
       end
@@ -46,5 +46,5 @@ module RedisModel
     end
 
   end
-  
+
 end
