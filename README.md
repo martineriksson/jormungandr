@@ -2,8 +2,6 @@
 Jǫrmungandr
 ===========
 
-*A very small ORM named after a very large snake.*
-
 Jǫrmungandr is a simple ORM, as in Object Redis Mapper. It enables very flexible
 creation of Ruby objects backed by a Redis database. It is kind of similar
 to Struct, but more dynamic. Model classes can be created like so:
@@ -85,4 +83,4 @@ Example of usage
     => 28 
 
 Note that the Person class is created only once. In the second irb session,
-Jormungandr creates it when it finds a reference to it in the database.
+Jǫrmungandr creates it when it finds a reference to it in the database.
