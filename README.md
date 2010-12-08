@@ -1,12 +1,14 @@
 
-Model - Minimalist ORM (Object-Redis Mapping)
-=============================================
+Jǫrmungandr
+===========
 
-Model is a simple ORM, as in Object Redis Mapper. It enables very flexible
+*A very small ORM named after a very large snake.*
+
+Jǫrmungandr is a simple ORM, as in Object Redis Mapper. It enables very flexible
 creation of Ruby objects backed by a Redis database. It is kind of similar
 to Struct, but more dynamic. Model classes can be created like so:
 
-    class Thing < Model
+    class Thing < Jormungandr::Model
     end
 
     thing = Thing.new
@@ -33,8 +35,8 @@ called.
 Features
 --------
 
-* When the Model class loads, the associated Redis database is scanned for
- hkeys beginning with "Model.". From each of these hashes, a corresponding
+* When the Jormungandr class loads, the associated Redis database is scanned for
+ hkeys beginning with "Jormungandr.". From each of these hashes, a corresponding
  Ruby object is created. 
 
 * The Ruby object representing a model instance is very thin. It has one
@@ -45,18 +47,18 @@ Features
  to declare new attributes. It is up to the programmer to keep track of what
  attributes are used.
 
-* The Model objects will naively store attributes of any name. Every object is
+* The model objects will naively store attributes of any name. Every object is
  in effect its own little key-value store, with every key being a valid method
  of the object itself.
 
-* In a Redis hash representing a Model object, the values are Ruby objects
+* In a Redis hash representing a model object, the values are Ruby objects
  serialized with Marshal.
 
 * If the Sinatra module is loaded, a REST API is created through which the
  model objects can be accessed and manipulated using the standard HTTP verbs.
- Also, some admin views are created.
+ Also, some admin views are created. (NOTE: Not yet merged into public repo!)
 
-* If a method is called that is a pluralized form of a Model subclass, Model
+* If a method is called that is a pluralized form of a Model subclass, it
  returns all instances of this subclass that references the instance on wich
  the method was called (one-to-many relations).
 
@@ -64,8 +66,8 @@ Features
 Example of usage
 ----------------
 
-    $ irb -rlib/model
-    > class Person < Model; end
+    $ irb -rjormungandr
+    > class Person < Jormungandr::Model; end
     => nil 
     > p = Person.new
     => #<Person:0x101115740 @id=0> 
@@ -74,7 +76,7 @@ Example of usage
     > p.age = 28
     => 28 
     > exit
-    $ irb -rlib/model
+    $ irb -rjormungandr
     > Person.all
     => [#<Person:0x101125dc0 @id=0>] 
     > Person.all.first.name
@@ -83,5 +85,4 @@ Example of usage
     => 28 
 
 Note that the Person class is created only once. In the second irb session,
-lib/model creates it when it finds a reference to it in the database.
-
+Jormungandr creates it when it finds a reference to it in the database.
