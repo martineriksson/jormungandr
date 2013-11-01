@@ -64,7 +64,7 @@ Features
 Example of usage
 ----------------
 
-    $ irb -rjormungandr
+    $ irb -r ./jormungandr
     > class Person < Jormungandr::Model; end
     => nil 
     > p = Person.new
@@ -74,7 +74,7 @@ Example of usage
     > p.age = 28
     => 28 
     > exit
-    $ irb -rjormungandr
+    $ irb -r ./jormungandr
     > Person.all
     => [#<Person:0x101125dc0 @id=0>] 
     > Person.all.first.name
