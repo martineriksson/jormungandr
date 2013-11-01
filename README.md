@@ -35,7 +35,7 @@ Features
 
 * When the Jormungandr class loads, the associated Redis database is scanned for
  hkeys beginning with "Jormungandr.". From each of these hashes, a corresponding
- Ruby object is created. 
+ Ruby object is created.
 
 * The Ruby object representing a model instance is very thin. It has one
  instance variable, @id, which corresponds to the Redis hashkey where the
@@ -66,11 +66,11 @@ Example of usage
 
     $ irb -r ./jormungandr
     > class Person < Jormungandr::Model; end
-    => nil 
+    => nil
     > p = Person.new
     => #<Person:0x101115740 @id=0> 
     > p.name = "Martin"
-    => "Martin" 
+    => "Martin"
     > p.age = 28
     => 28 
     > exit
@@ -78,9 +78,9 @@ Example of usage
     > Person.all
     => [#<Person:0x101125dc0 @id=0>] 
     > Person.all.first.name
-    => "Martin" 
+    => "Martin"
     > Person.all.first.age
-    => 28 
+    => 28
 
 Note that the Person class is created only once. In the second irb session,
 Jǫrmungandr creates it when it finds a reference to it in the database.
