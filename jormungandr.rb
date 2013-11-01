@@ -53,7 +53,7 @@ module Jormungandr
     def self.inherited(subclass)
       subclass.instance_eval { @all = [] }
     end
-    
+
     # Takes an optional id. Unless it gets one, a new one is generated.
     #
     def initialize( _id = nil )
@@ -105,7 +105,7 @@ module Jormungandr
     def get( attribute )
       Marshal.load Jormungandr.redis.hget(_key, attribute) rescue nil
     end
-    
+
     # Return the string used as key in the Redis database.
     #
     def _key
@@ -146,7 +146,7 @@ module Jormungandr
       def random
         all[rand all.length]
       end
-      
+
     end
 
     # Create a new Model instance. Corresponds to the HTTP method POST.
@@ -178,7 +178,7 @@ module Jormungandr
         params.each_pair { |k, v| send :"#{k}=", v }
       else
         self.class.post params
-      end      
+      end
     end
 
     # Delete an existing Model instance. Corresponds to the HTTP method DELETE.
@@ -191,7 +191,7 @@ module Jormungandr
     end
 
   end
-  
+
   load_models!
-  
+
 end
