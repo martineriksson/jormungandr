@@ -42,6 +42,12 @@ module Jormungandr
       ObjectSpace.each_object(Class).select { |c| c < Model }
     end
 
+    # Convenience method for creating models, e.g. Thing = Jormungandr.new
+    #
+    def new
+      Class.new(Jormungandr::Model)
+    end
+
   end
 
   class Model

@@ -6,8 +6,7 @@ Jǫrmungandr is a simple ORM, as in Object Redis Mapper. It enables very flexibl
 creation of Ruby objects backed by a Redis database. It is kind of similar
 to Struct, but more dynamic. Model classes can be created like so:
 
-    class Thing < Jormungandr::Model
-    end
+    Thing = Jormungandr.new
 
     thing = Thing.new
 
@@ -65,7 +64,7 @@ Example of usage
 ----------------
 
     $ irb -r ./jormungandr
-    > class Person < Jormungandr::Model; end
+    > Person = Jormungandr.new
     => nil
     > p = Person.new
     => #<Person:0x101115740 @id=0> 
